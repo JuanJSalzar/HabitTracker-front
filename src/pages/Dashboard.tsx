@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal.tsx";
 import ChatBotModal from "../components/ChatBotModal.tsx";
+import { API_BASE } from "../config";
 
 const Dashboard = () => {
   const { token } = useAuth();
@@ -25,7 +26,7 @@ const Dashboard = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("http://localhost:5237/api/Habit", {
+      const response = await fetch(`${API_BASE}/api/Habit`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -63,7 +64,7 @@ const Dashboard = () => {
     toast.loading("Deleting habit...");
     try {
       const response = await fetch(
-        `http://localhost:5237/api/Habit/${habitToDelete.id}`,
+        `${API_BASE}/api/Habit/${habitToDelete.id}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },

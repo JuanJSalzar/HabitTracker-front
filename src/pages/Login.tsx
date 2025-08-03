@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import type { LoginRequest, LoginResponse } from "../types/auth.ts";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
+import { API_BASE } from "../config.ts";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
     const payload: LoginRequest = { email, password };
 
     try {
-      const response = await fetch("http://localhost:5237/api/Auth/login", {
+      const response = await fetch(`${API_BASE}/api/Auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

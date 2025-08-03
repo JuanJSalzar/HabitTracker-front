@@ -19,8 +19,9 @@ Before you begin, ensure you have the following installed on your system:
 
 ### Backend Requirement
 
-- **Habit Tracker API** must be running on `http://localhost:5237`
-- Ensure the backend is properly configured and accessible
+- **Habit Tracker API** backend service
+- The API endpoint is configurable via environment variables
+- Default: `http://localhost:5237` (for development)
 
 ## 🚀 Quick Setup
 
@@ -44,7 +45,17 @@ yarn install
 
 ### Step 3: Environment Setup
 
-The application is pre-configured to connect to `http://localhost:5237` for the API. If your backend runs on a different port, you'll need to update the API endpoints in the source code.
+Create a `.env` file in the root directory to configure your API endpoint:
+
+```env
+# Production API URL
+VITE_API_URL=https://your-production-api.com
+
+# Or leave empty to use default localhost:5237 for development
+# VITE_API_URL=
+```
+
+If no `.env` file is provided, the app defaults to `http://localhost:5237`
 
 ### Step 4: Start Development Server
 
@@ -59,6 +70,8 @@ yarn dev
 ### Step 5: Access the Application
 
 Open your browser and navigate to `http://localhost:5173`
+
+The application will connect to your configured API endpoint (default: `http://localhost:5237`).
 
 ## 🔧 Detailed Installation
 
@@ -211,7 +224,9 @@ npx tsc --noEmit
 
 #### API Connection Problems
 
-- Verify backend is running on `http://localhost:5237`
+- Verify your API endpoint configuration in `.env` file
+- Check that `VITE_API_URL` is correctly set (if using custom endpoint)
+- Default fallback is `http://localhost:5237` if no env variable is set
 - Check CORS settings on the backend
 - Ensure network connectivity
 - Test API endpoints manually with tools like Postman

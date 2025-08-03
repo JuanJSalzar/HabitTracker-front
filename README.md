@@ -65,13 +65,13 @@ A modern, responsive habit tracking application built with React, TypeScript, an
 
 ## 🚀 Getting Started
 
-### **Prerequisites**
+## Prerequisites
 
-Make sure you have the following installed:
+Before running this application, ensure you have:
 
-- **Node.js** (v18 or higher)
-- **npm** or **yarn**
-- **Backend API** running on `http://localhost:5237`
+- **Node.js** (version 18 or higher)
+- **npm** or **yarn** package manager
+- **Backend API** running (configurable via environment variables)
 
 ### **Installation**
 
@@ -98,7 +98,17 @@ Make sure you have the following installed:
    yarn dev
    ```
 
-4. **Open your browser**
+4. **Configure API endpoint (optional):**
+
+   Create a `.env` file in the root directory to set your API URL:
+
+   ```env
+   VITE_API_URL=https://your-api-endpoint.com
+   ```
+
+   If no `.env` file is provided, the app defaults to `http://localhost:5237`
+
+5. **Open your browser**
    Navigate to `http://localhost:5173`
 
 ### **Available Scripts**
@@ -166,9 +176,14 @@ All modals and cards feature:
 - Subtle borders (`border-white/10`)
 - Smooth hover animations and scaling
 
-## 🔧 API Integration
+## **� API Integration**
 
-The frontend communicates with a backend API running on `http://localhost:5237` with the following endpoints:
+The frontend communicates with a backend API. The API endpoint is configurable via environment variables:
+
+- **Default**: `http://localhost:5237` (for development)
+- **Production**: Set `VITE_API_URL` environment variable
+
+### **API Endpoints**
 
 ### **Authentication**
 

@@ -8,6 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import { Mail, Lock, Trash2, UserIcon } from "lucide-react";
 import ConfirmDeleteAccountModal from "../components/ConfirmDeleteAccountModal";
 import toast from "react-hot-toast";
+import { API_BASE } from "../config";
 import React from "react";
 
 const Input = ({
@@ -56,7 +57,7 @@ const Profile = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("http://localhost:5237/api/User/me", {
+      const res = await fetch(`${API_BASE}/api/User/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Error fetching profile");
@@ -88,7 +89,7 @@ const Profile = () => {
       return toast.error("Invalid email format");
 
     try {
-      const res = await fetch("http://localhost:5237/api/User/me", {
+      const res = await fetch(`${API_BASE}/api/User/me`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +119,7 @@ const Profile = () => {
       return toast.error("Minimum 8 characters");
 
     try {
-      const res = await fetch("http://localhost:5237/api/User/me/password", {
+      const res = await fetch(`${API_BASE}/api/User/me/password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -140,7 +141,7 @@ const Profile = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      const res = await fetch("http://localhost:5237/api/User/me", {
+      const res = await fetch(`${API_BASE}/api/User/me`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

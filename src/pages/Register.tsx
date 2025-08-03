@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import type { ErrorResponse, RegisterRequest } from "../types/auth";
+import { API_BASE } from "../config";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const Register = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch("http://localhost:5237/api/Auth/register", {
+      const response = await fetch(`${API_BASE}/api/Auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

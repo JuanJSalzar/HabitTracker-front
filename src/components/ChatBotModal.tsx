@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import type { ChatMessage } from "../types/chat";
 import TypingLoader from "./TypingLoader.tsx";
 import Markdown from "react-markdown";
+import { API_BASE } from "../config";
 
 const ChatBotModal = () => {
   const { token } = useAuth();
@@ -44,7 +45,7 @@ const ChatBotModal = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5237/api/Chat/response", {
+      const response = await fetch(`${API_BASE}/api/Chat/response`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
